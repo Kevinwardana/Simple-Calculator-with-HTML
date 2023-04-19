@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">Simple Calculator</h1>
+    <div class="container">
+        <form method="post" action="/operation_result" id="calculator_form">
+            <div class="mb-3">
+              <label for="number1" name="Input1" class="form-label">First Number</label>
+              <input type="float" class="form-control" id="number1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="number2" name="Input2" class="form-label">Second Number</label>
+              <input type="float" class="form-control" id="number2">
+            </div> 
+            <div class="mb-3">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" name="operation" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Choose operation
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" value="+" href="#">Addition</a></li>
+                      <li><a class="dropdown-item" value="-" href="#">Subtraction</a></li>
+                      <li><a class="dropdown-item" value="*" href="#">Multiplication</a></li>
+                      <li><a class="dropdown-item" value="/" href="#">Division</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <input type="submit" value="Submit"/>
+            <!--<button type="submit" value="Submit" class="btn btn-primary">Submit</button>-->
+          </form>
+          {% if calculation_success == True %}
+        <br/>
+        <p>The calculation for {{input1}} {{operation}} {{input2}} is: {{result}}</p>
+    {% endif %}
+    {% if calculation_success == False %}
+        <br/>
+        <p>{{error}}</p>
+        <p>{{input1}} {{operation}} {{input2}} = "{{result}}"</p>
+    {% endif %}
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
